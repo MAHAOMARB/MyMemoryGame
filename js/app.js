@@ -117,7 +117,8 @@ function isMatch(card){
     
      
 }
-//.....................................................................
+//......................................................................
+
 function incrementMoves(){
     movesCounter++;
     document.getElementsByClassName("moves")[0].innerHTML=movesCounter;
