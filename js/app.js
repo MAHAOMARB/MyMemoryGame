@@ -176,8 +176,15 @@ function isAllMatched(){
 }
 //.......................................................................
 function showInfo(grade){
-  alert("Congratulation , you win with  " + movesCounter +" moves " + " with time " 
-  + timer.innerHTML + ", score is :" + grade);
+  //alert("Congratulation , you win with  " + movesCounter +" moves " + " with time " 
+  //+ timer.innerHTML + ", score is :" + grade);
+  var txt;
+    if (confirm("Congratulation , you win with  " + movesCounter +" moves " + " in time " 
+    + timer.innerHTML + ", score is :" + grade + "PLAY AGAIN !?")) {
+        window.location.reload();
+    } else {
+        txt = "";
+    }
 }
 
 
