@@ -6,20 +6,16 @@ var movesCounter=0;
 var click=0;
 var interval;
 var timer=document.querySelector(".timer");
-timer.innerHTML="0 mins : 0 secs";//initial time
+timer.innerHTML="0  mins : 0  secs";//initial time
 
 //startTimer function uses second and minute variables to calculate the timing
 var second=0;
 var minute=0;
 
-// @description shuffles cards when page is refreshed / loads
-//document.body.onlclick = displayCards();
-/*function gameStart(){
-    console.log("game start again");
-    movesCounter=0;
-}*/
+//...........................................................
 
 displayCards();
+//.........................................................
 
 //Add event listener
 //loop to add event listener to each card
@@ -29,11 +25,17 @@ var cards =document.getElementsByClassName("card");
    } 
 
 //..........................................................
+//function restartBtn to refresh page of game     
+function restartBtn() {
+    window.location.reload();
+}  
+//..........................................................
 //bring all cards from DOM
 function cardsInitialize() {
 var domCards = document.getElementsByClassName("card"); 
 return transformer(domCards);
 }
+
 //..........................................................
 function transformer(object){
 var transformed=[];
@@ -44,42 +46,30 @@ for(var key in object){
 }
 return transformed;
 }
+
 //...........................................................
+//remove all initial cards then display shuffled Cards each time the player wants to play the game
 function displayCards(){
-    //showInfo();
-   
+    
     var ul = document.getElementsByClassName("deck");
     
-       for(var i=0; i< ul.length ; i++){
-         ul[i].innerHTML='';
-       }
-       for (var y=0 ; y<shuffledCards.length; y++){
-         let elmi = document.createElement("i");
-         var li = document.createElement("li");
-         li.innerHTML = shuffledCards[y];
-         li.classList.add("card");
-         li.appendChild(elmi);
-         ul[0].appendChild(li);
-       }
-       
+    for(var i=0; i< ul.length ; i++){
+        ul[i].innerHTML='';
+    }
+    for (var y=0 ; y<shuffledCards.length; y++){
+        let elmi = document.createElement("i");
+        var li = document.createElement("li");
+        li.innerHTML = shuffledCards[y];
+        li.classList.add("card");
+        li.appendChild(elmi);
+        ul[0].appendChild(li);
+    }      
 }
-/*
-for (var i =0 ; i<shuffledCards.length; i++){
- let elmi = document.createElement("i");
-   var li = document.createElement("li");
-   elmi.className = shuffledCards[i];
-   li.classList.add("card");
-   li.appendChild(elmi);
-   ul[0].appendChild(li); 
-}
-
-*/
  //..........................................................
 function fireMatcher(card) {
-    console.log(card);
     click++;
     if(click==1){startTimer();}
-    displayIcon(card); //to show "open" and "show" classes
+    displayIcon(card); 
     isMatch(card);
 }
 //...........................................................
@@ -94,14 +84,14 @@ function startTimer(){
     },1000);   
  } 
  //...........................................................
+ //gives score 3,2 or 1 depends on movesCounter
 function starRating(movesCounter){
+    let score = 3;
+    //var stars=document.getElementsByClassName("stars");
 
-    var stars=document.getElementsByClassName("stars");
-
-    if(movesCounter <= 18)
-
+    if(movesCounter <= 18){
         score = 3;
-        
+    }   
     else if((movesCounter > 18) && (movesCounter <= 25)){
         //stars[0].classList.remove("fa fa-star");
        
@@ -118,35 +108,32 @@ function starRating(movesCounter){
 }
 
  //...........................................................
+ //to show "open" and "show" classes
  function displayIcon(card){
     
     card.className +=" "+"show open";
-    //card.classList.add("show","open");
+    
 }
  //...................................................................
+ //comapre between two cards if they matched or not
 function isMatch(card){
     console.log(card);
     if(openedCard.length==0){
         openedCard.push(card);
         incrementMoves();
     }else{
-        //incrementMoves();
-        console.log()
-            openedCard.push(card);
-            if(openedCard[0].children[0].getAttribute('class')==openedCard[1].children[0].getAttribute('class')){
+        
+        
+        openedCard.push(card);
+        if(openedCard[0].children[0].getAttribute('class')==openedCard[1].children[0].getAttribute('class')){
               
-    
-            //and if li[i]!=li[i]     
-               matched(openedCard);
-               openedCard=[];
-            }else{
-               noMatched(openedCard);
-               openedCard=[];
-            } 
-        }
-       
-    
-     
+            matched(openedCard);
+            openedCard=[];
+        }else{
+            noMatched(openedCard);
+            openedCard=[];
+        } 
+    }    
 }
 //......................................................................
 
@@ -163,9 +150,9 @@ function matched(openedCard){
         openedCard[x].classList.add("match");
         allMatchedCards +=1;
     }
-    isAllMatched();
-    //openedCard=[];
-}, 1000);  
+    isAllMatched(); 
+    
+    }, 1000);  
 }  
 //.....................................................................
 function noMatched(openedCard){
@@ -173,44 +160,26 @@ function noMatched(openedCard){
         for(var z=0; z<openedCard.length;z++){
             openedCard[z].classList.remove("show","open");
         }
-        //openedCard=[];
-      }, 1000);   
+        
+    }, 1000);   
 } 
 //.....................................................................
+//all cards have match class
 function isAllMatched(){
     
     if(allMatchedCards==16){
         clearInterval(interval);
-       var score= starRating();
+        var grade= starRating(movesCounter);
+        showInfo(grade);
         
-        
-        showInfo();
-        finishGame();
     }
 }
 //.......................................................................
-function showInfo(){
-alert("Congratulation , you win with  " + movesCounter +" moves " + " with time " 
-+ timer.innerHTML + ", score is :" + score);
-
-/*swal({
-    title: "Congratulation",
-    text: "Your will not be able to recover this imaginary file!",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonClass: "btn-danger",
-    confirmButtonText: "play Again",
-    closeOnConfirm: false
-  },
-  function(){
-    swal("Deleted!", "Your imaginary file has been deleted.", "success");
- }); */
+function showInfo(grade){
+  alert("Congratulation , you win with  " + movesCounter +" moves " + " with time " 
+  + timer.innerHTML + ", score is :" + grade);
 }
-//........................................................................
-function finishGame(){
 
-}
-//........................................................................
 
 
 /*
