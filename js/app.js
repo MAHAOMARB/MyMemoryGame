@@ -12,6 +12,13 @@ timer.innerHTML="0 mins : 0 secs";//initial time
 var second=0;
 var minute=0;
 
+// @description shuffles cards when page is refreshed / loads
+//document.body.onlclick = displayCards();
+/*function gameStart(){
+    console.log("game start again");
+    movesCounter=0;
+}*/
+
 displayCards();
 
 //Add event listener
@@ -87,6 +94,30 @@ function startTimer(){
     },1000);   
  } 
  //...........................................................
+function starRating(movesCounter){
+
+    var stars=document.getElementsByClassName("stars");
+
+    if(movesCounter <= 18)
+
+        score = 3;
+        
+    else if((movesCounter > 18) && (movesCounter <= 25)){
+        //stars[0].classList.remove("fa fa-star");
+       
+        score = 2;
+    }
+        
+	else{
+       // stars[0].classList.remove("fa fa-star");
+       // stars[1].classList.remove("fa fa-star");
+        
+        score = 1;
+    }
+    return score;
+}
+
+ //...........................................................
  function displayIcon(card){
     
     card.className +=" "+"show open";
@@ -150,6 +181,8 @@ function isAllMatched(){
     
     if(allMatchedCards==16){
         clearInterval(interval);
+       var score= starRating();
+        
         
         showInfo();
         finishGame();
@@ -157,7 +190,9 @@ function isAllMatched(){
 }
 //.......................................................................
 function showInfo(){
-alert("Congratulation , you win with" + movesCounter +"moves" + "with time " + timer.innerHTML + "");
+alert("Congratulation , you win with  " + movesCounter +" moves " + " with time " 
++ timer.innerHTML + ", score is :" + score);
+
 /*swal({
     title: "Congratulation",
     text: "Your will not be able to recover this imaginary file!",
