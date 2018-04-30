@@ -6,7 +6,7 @@ var movesCounter=0;
 var click=0;
 var interval;
 var timer=document.querySelector(".timer");
-timer.innerHTML="0  mins : 0  secs";//initial time
+timer.innerHTML=" 0 mins : 0 secs ";//initial time
 
 //startTimer function uses second and minute variables to calculate the timing
 var second=0;
@@ -67,15 +67,17 @@ function displayCards(){
 }
  //..........................................................
 function fireMatcher(card) {
+    if(card.className !== 'card match' && card.className !== 'card show open'){
     click++;
     if(click==1){startTimer();}
     displayIcon(card); 
     isMatch(card);
+    }
 }
 //...........................................................
 function startTimer(){
     interval=setInterval(function(){
-        timer.innerHTML= minute + "mins" + ":" + second + "secs";
+        timer.innerHTML= minute + " mins " + " : " + second + " secs ";
         second++;
         if(second==60){
             minute++;
@@ -178,13 +180,30 @@ function isAllMatched(){
 function showInfo(grade){
   //alert("Congratulation , you win with  " + movesCounter +" moves " + " with time " 
   //+ timer.innerHTML + ", score is :" + grade);
-  var txt;
-    if (confirm("Congratulation , you win with  " + movesCounter +" moves " + " in time " 
-    + timer.innerHTML + ", score is :" + grade + "PLAY AGAIN !?")) {
-        window.location.reload();
+  //var txt;
+   // if (confirm("Congratulation , you win with  " + movesCounter +" moves " + " in time " 
+   // + timer.innerHTML + ", score is :" + grade + "PLAY AGAIN !?")) {
+       // window.location.reload();
+    //} else {
+        //txt = "";
+   // }
+   swal({
+    title: 'Congratulation',
+    text: "You win with  " + movesCounter +" moves " + " in time " 
+    + timer.innerHTML + ", score is :" + grade ,
+    type: 'success',
+    showCancelButton: true,
+    confirmButtonText: 'PLAY AGAIN !?!',
+    cancelButtonText: 'No.'
+    }).then(result => {
+    if (result.value) {
+    window.location.reload();
     } else {
-        txt = "";
+    // handle dismissals
+    // result.dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
     }
+    });
+    
 }
 
 
