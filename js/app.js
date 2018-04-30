@@ -139,7 +139,7 @@ function incrementMoves(){
 }
 //.....................................................................
 function starCounter(){
-    if (movesCounter === 20) {
+    if (movesCounter === 2) {
         removeStar();
     }
     else if (movesCounter === 30) {
@@ -148,8 +148,18 @@ function starCounter(){
 }
 //.....................................................................
 function removeStar(){
-    document.getElementsByClassName("stars").children[0].classList.remove;
-    document.getElementsByClassName("stars").appendChild('<li><i class="fa fa-star-o"></i></li>')
+    var star = document.getElementsByClassName("stars");
+    
+        star.removeChild(star.childNodes[0]);
+        
+        
+    //for(var f=0; f<star.length;f++){
+       // if(f==0){
+            //star.children[f].innerHTML="";
+       // }
+    //}
+    //star.children[0].innerHTML="";
+    
 }
 //.....................................................................
 function matched(openedCard){
