@@ -90,20 +90,16 @@ function startTimer(){
 function starRating(movesCounter){
     let score = 3;
     //var stars=document.getElementsByClassName("stars");
-
     if(movesCounter <= 18){
         score = 3;
     }   
     else if((movesCounter > 18) && (movesCounter <= 25)){
         //stars[0].classList.remove("fa fa-star");
-       
         score = 2;
-    }
-        
+    }    
 	else{
        // stars[0].classList.remove("fa fa-star");
        // stars[1].classList.remove("fa fa-star");
-        
         score = 1;
     }
     return score;
@@ -119,16 +115,15 @@ function starRating(movesCounter){
  //...................................................................
  //comapre between two cards if they matched or not
 function isMatch(card){
-    console.log(card);
+    
     if(openedCard.length==0){
         openedCard.push(card);
         incrementMoves();
+        starCounter();
     }else{
-        
-        
         openedCard.push(card);
-        if(openedCard[0].children[0].getAttribute('class')==openedCard[1].children[0].getAttribute('class')){
-              
+
+        if(openedCard[0].children[0].getAttribute('class')==openedCard[1].children[0].getAttribute('class')){ 
             matched(openedCard);
             openedCard=[];
         }else{
@@ -138,10 +133,23 @@ function isMatch(card){
     }    
 }
 //......................................................................
-
 function incrementMoves(){
     movesCounter++;
     document.getElementsByClassName("moves")[0].innerHTML=movesCounter;
+}
+//.....................................................................
+function starCounter(){
+    if (movesCounter === 20) {
+        removeStar();
+    }
+    else if (movesCounter === 30) {
+        removeStar();
+    }
+}
+//.....................................................................
+function removeStar(){
+    document.getElementsByClassName("stars").children[0].classList.remove;
+    document.getElementsByClassName("stars").appendChild('<li><i class="fa fa-star-o"></i></li>')
 }
 //.....................................................................
 function matched(openedCard){
@@ -178,31 +186,23 @@ function isAllMatched(){
 }
 //.......................................................................
 function showInfo(grade){
-  //alert("Congratulation , you win with  " + movesCounter +" moves " + " with time " 
-  //+ timer.innerHTML + ", score is :" + grade);
-  //var txt;
-   // if (confirm("Congratulation , you win with  " + movesCounter +" moves " + " in time " 
-   // + timer.innerHTML + ", score is :" + grade + "PLAY AGAIN !?")) {
-       // window.location.reload();
-    //} else {
-        //txt = "";
-   // }
-   swal({
-    title: 'Congratulation',
-    text: "You win with  " + movesCounter +" moves " + " in time " 
-    + timer.innerHTML + ", score is :" + grade ,
-    type: 'success',
-    showCancelButton: true,
-    confirmButtonText: 'PLAY AGAIN !?!',
-    cancelButtonText: 'No.'
-    }).then(result => {
-    if (result.value) {
-    window.location.reload();
-    } else {
-    // handle dismissals
-    // result.dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
-    }
-    });
+  
+    swal({ 
+        title: 'Congratulation',
+        text: "You win with  " + movesCounter +" moves " + " in time " 
+        + timer.innerHTML + ", score is :" + grade ,
+        type: 'success',
+        showCancelButton: true,
+        confirmButtonText: 'PLAY AGAIN !?!',
+        cancelButtonText: 'No.'
+        }).then(result => {
+        if (result.value) {
+        window.location.reload();
+        } else {
+        // handle dismissals
+        // result.dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
+        }
+        });
     
 }
 
