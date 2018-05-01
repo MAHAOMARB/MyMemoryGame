@@ -88,10 +88,10 @@ function startTimer(){
 //gives score 3,2 or 1 depends on movesCounter
 function starRating(movesCounter){
     let score = 3;
-    if(movesCounter <= 18){
+    if(movesCounter <= 19){
         score = 3;
     }   
-    else if((movesCounter > 18) && (movesCounter <= 25)){
+    else if((movesCounter > 19) && (movesCounter <= 24)){
         score = 2;
     }    
 	else{
