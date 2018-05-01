@@ -139,27 +139,18 @@ function incrementMoves(){
 }
 //.....................................................................
 function starCounter(){
-    if (movesCounter === 2) {
+    if (movesCounter === 20) {
         removeStar();
     }
-    else if (movesCounter === 30) {
+    else if (movesCounter === 25) {
         removeStar();
     }
 }
 //.....................................................................
 function removeStar(){
-    var star = document.getElementsByClassName("stars");
-    
-        star.removeChild(star.childNodes[0]);
-        
-        
-    //for(var f=0; f<star.length;f++){
-       // if(f==0){
-            //star.children[f].innerHTML="";
-       // }
-    //}
-    //star.children[0].innerHTML="";
-    
+    var star = document.getElementsByClassName("stars")[0];
+    var element=star.getElementsByTagName("li");
+        star.removeChild(element[0]);  
 }
 //.....................................................................
 function matched(openedCard){
