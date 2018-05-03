@@ -1,19 +1,23 @@
-# Memory Game Project
+# Memory Game Project By Udacity
 
-## Table of Contents
+# The project built by using HTML, CSS, and Javacript
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## How to paly :
 
-## Instructions
+### click the box of cards to filp the cards, if two filped cards are match, it will be filped. else it will still in back.You should take as fewer as possiable steps to filp all cards, And then you will get a rank about the level of your memory.When you won, you will see a popup window contains your game data such as:
+* Star rating.
+* How many moves have been made
+* How long time you take to finish the game.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Code Dependencies :
 
-To get started, open `js/app.js` and start building out the app's functionality
+The app is built with the following code dependencies:
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+* Font Awesome.
+* sweet alert.
 
-## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+
+
+
 
