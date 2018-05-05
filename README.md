@@ -1,6 +1,15 @@
 # Memory Game Project By Udacity
 
+## What is the Memory Game:
+This is a simple game built to test a users memory. There's a deck of cards with different icons.
+
 # The project built by using HTML, CSS, and Javacript
+
+## How to install the game :
+
+1. download the zip file of repositry.
+1. unzip file.
+1. open up the index.html file in your browser.
 
 ## How to paly :
 
