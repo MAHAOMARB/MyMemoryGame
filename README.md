@@ -7,8 +7,8 @@ This is a simple game built to test a users memory. There's a deck of cards with
 
 ## How to install the game :
 
-1. download the zip file of repositry.
-1. unzip file.
+1. Download zip project repository.
+1. Unzip it in your computer.
 1. open up the index.html file in your browser.
 
 ## How to paly :
