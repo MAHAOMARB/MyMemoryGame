@@ -28,18 +28,18 @@ function restartBtn() {
 
 //access to all initial crads through DOM
 function cardsInitialize() {
-var domCards = document.getElementsByClassName("card"); 
-return transformer(domCards);
+    var domCards = document.getElementsByClassName("card"); 
+    return transformer(domCards);
 }
 
 function transformer(object){
-var transformed=[];
+    var transformed=[];
 
-for(var key in object){
-    if(object.hasOwnProperty(key)){
-        transformed.push(object[key].innerHTML);
-    }  
-}
+    for(var key in object){
+        if(object.hasOwnProperty(key)){
+            transformed.push(object[key].innerHTML);
+        } 
+    }
 
 return transformed;
 }
@@ -148,15 +148,16 @@ function removeStar(){
 
 function matched(openedCard){
     setTimeout(function(){
-    for(var x=0; x<openedCard.length;x++){
+        for(var x=0; x<openedCard.length;x++){
         
-        openedCard[x].classList.remove("show","open");
-        openedCard[x].classList.add("match");
-        allMatchedCards +=1;
-    }
-    isAllMatched(); 
-    
-    }, 1000);  
+            openedCard[x].classList.remove("show","open");
+            openedCard[x].classList.add("match");
+            allMatchedCards +=1;
+        }
+        isAllMatched(); 
+        
+    }, 1000); 
+     
 }  
 
 function noMatched(openedCard){
