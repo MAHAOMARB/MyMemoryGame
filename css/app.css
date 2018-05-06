@@ -107,3 +107,33 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Media query
+ */
+
+@media only screen and (max-width: 700px) {
+	.score-panel {
+        width: 95%;
+    }
+
+    .deck {
+        width: 95%;
+        padding: 16px;
+        min-height: 100vw;
+    }
+
+    .deck .card {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+@media only screen and (min-width: 710px) {
+    .score-panel {
+        font-size: 22px;
+        
+    }
+    
+}
+

@@ -6,7 +6,7 @@ var movesCounter=0;
 var click=0;
 var interval;
 var timer=document.querySelector(".timer");
-timer.innerHTML=" 0 mins : 0 secs ";//initial time
+timer.innerHTML=" 0 mins:0 secs ";//initial time
 
 //startTimer function uses second and minute variables to calculate the timing
 var second=0;
@@ -76,7 +76,7 @@ function fireMatcher(card) {
 
 function startTimer(){
     interval=setInterval(function(){
-        timer.innerHTML= minute + " mins " + " : " + second + " secs ";
+        timer.innerHTML= minute + " mins " + ":" + second + " secs ";
         second++;
         if(second==60){
             minute++;
