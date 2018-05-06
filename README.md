@@ -23,6 +23,7 @@ This is a simple game built to test a users memory. There's a deck of cards with
 The app is built with the following code dependencies:
 
 * Font Awesome.
+* Media query
 * sweet alert.
 
 
